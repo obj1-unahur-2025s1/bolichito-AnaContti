@@ -1,0 +1,47 @@
+import personas.*
+import coloresYMateriales.* 
+import objectos.*
+
+describe "Realizamos algunos test..." {
+  test " A Rosa le gustan una pelota, una remera o un muñeco cuyo peso sea menor a 2000 gramos"{
+      muñeco.peso(1500)
+      assert.that(rosa.leGusta(pelota))
+      assert.that(rosa.leGusta(remera))
+      assert.that(rosa.leGusta(muñeco))
+    
+  }
+
+  test "A Rosa no le gustan la biblioteca o una placa de 3500"{
+    placa.peso(3500)
+    assert.that(not rosa.leGusta(biblioteca))
+    assert.that(not rosa.leGusta(placa))
+    
+  }
+
+  test "A Estefania le gusta una placa roja o una biblioteca. No le gusta una pelota parda de cuero ni un muñeco celeste de vidrio"{
+     placa.color(rojo)
+     assert.that(estefania.leGusta(placa))
+     assert.that(estefania.leGusta(biblioteca))
+     assert.that(not estefania.leGusta(pelota))
+     assert.that(not estefania.leGusta(muñeco))
+  }
+
+  test "A Luisa le gusta una placa de cobre o un muñeco de vidrio. No le gusta la remera ni una pelota." {
+     assert.that(luisa.leGusta(placa))
+     assert.that(luisa.leGusta(muñeco))
+     assert.that(not luisa.leGusta(remera))
+     assert.that(not luisa.leGusta(pelota))
+    
+  }
+  test "A Juan le gusta una pelota, un muñeco celeste, o una placa de cobre que pese 1500. No le gusta una biblioteca ni la remera" {
+     placa.peso(1500)
+     assert.that(juan.leGusta(pelota))
+     assert.that(juan.leGusta(muñeco))
+     assert.that(juan.leGusta(placa))
+     assert.that(not juan.leGusta(biblioteca))
+     assert.that(not juan.leGusta(remera))
+    
+  }
+
+
+}

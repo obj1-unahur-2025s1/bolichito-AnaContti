@@ -1,121 +1,42 @@
-import persona.*
-import objetos.*
-
-object bolichito {
-  var objetoEnVidriera = pelota
-  var objetoEnMostrador = remera 
-
-  method objetoEnMostrador(objetoAPoner) {
-    objetoEnMostrador = objetoAPoner
+import objectos.*
+object bolichito{
+    var property enVidriera =  placa
+    var property enMostrador = muñeco 
     
-  }
-
-  method objetoEnVidriera(objetoAPoner) {
-    objetoEnVidriera = objetoAPoner 
-    
-  }
-
-  method esBrillante() {
-    return objetoEnMostrador.material().brilla()  &&
-            objetoEnVidriera.material().brilla() 
-    
-  }
-    method esMonocromatico() {
-        return objetoEnMostrador.color() == objetoEnVidriera.color() 
-      
+    method sonMaterialesBrillantes(objecto1, objecto2){
+        return objecto1.material().esBrillante() and objecto2.material().esBrillante()
     }
-    method estaEquilibrado() {
-        return objetoEnMostrador.peso() > objetoEnVidriera.peso()
-      
+    method sonDelMismoColor(objecto1, objecto2){
+        return objecto1.color() == objecto2.color()
     }
 
-    method tieneAlgodeColor( unColor ) {
-        return objetoEnMostrador.color() == unColor || 
-                objetoEnVidriera.color() == unColor 
-      
+    method esBolichitoBrillante(){
+        return self.sonMaterialesBrillantes(enVidriera, enMostrador)
+    }
+
+    method esBolichitoMonocromatico(){
+        return self.sonDelMismoColor(enVidriera, enMostrador)
+
+    }
+
+    method esbolichitoEquilibrado(){
+        return enMostrador.peso() > enVidriera.peso()
+    }
+
+    method hayObjectoExhibidoDeColor(unColor){
+        return enVidriera.color() == unColor ||
+               enMostrador.color() == unColor
+    }
+
+    method puedeMejorar(){
+        return self.esbolichitoEquilibrado() || self.esBolichitoMonocromatico()
     }
     
-    method puedeMejorar() {
-        return not  self.estaEquilibrado() ||
-                    self.esMonocromatico()
-      
-    } 
-    method puedeOfrecerleAlgoA(unaPersona) {
-        return
-            unaPersona.leGusta(objetoEnMostrador ) || 
-            unaPersona.leGusta(objetoEnVidriera)
+    method puedeOfrecerleAlgoA(unaPersona){
+        return unaPersona.leGusta(enVidriera) || unaPersona.leGusta(enMostrador)
+    }
+
+
+
     
-}
-    method intercambiarObjetos() {
-      const aux = objetoEnMostrador
-      objetoEnMostrador = objetoEnVidriera
-      objetoEnVidriera = aux 
-    }
-
-    method intercambiar(unObjeto, otroObjeto) {
-        objetoEnMostrador = unObjeto
-        objetoEnVidriera = otroObjeto
-      
-    }
-
-}
-
-//mas cosas
-
-object arito {
-  method color() {
-    return celeste
-    
-  }  
-  method peso() {
-    return 180
-    
-  }
-  method material() {
-    return cobre 
-  }
-}
-
-object banquito {
-    var color = naranja
- 
-  method peso() {
-    return 1700
-    
-  }  
-  method material() {
-    return madera
-    
-  }
-
-
- method color() {
-    return color 
-   
- }
- method color(unColor){
-    color = unColor 
- }
-
-
-}
-
-object cajita {
-    var objetoInterno = arito 
-    method color() {
-        return rojo
-      
-    }
-    method material() {
-        return cobre 
-      
-    }
-    method peso() {
-        return 400 + objetoInterno.peso()
-      
-    }
-    method objetoInterno(unObjeto) {
-      objetoInterno = unObjeto
-    }
-  
 }
